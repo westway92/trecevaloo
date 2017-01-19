@@ -56,7 +56,7 @@ public class RelativePAtN extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 count++;
             }
         }

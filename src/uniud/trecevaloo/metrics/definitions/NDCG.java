@@ -67,7 +67,7 @@ public class NDCG extends Metric{
                 Qrel q = topicQrel.getQrel(runLine.getIdDocument());
 
                 if(q!=null){
-                    relevance = q.getRelevance().getValue();
+                    relevance = q.getValue();
                     if( relevance < 0){
                         relevance = 0;
                     }
@@ -80,7 +80,7 @@ public class NDCG extends Metric{
 
             // compute IDCG
             if(i < qrels.size()){
-                idealRelevance = qrels.get(i).getRelevance().getValue();
+                idealRelevance = qrels.get(i).getValue();
                 if( idealRelevance < 0){
                     idealRelevance = 0;
                 }
@@ -98,7 +98,7 @@ public class NDCG extends Metric{
             // do not compute this if is NDCG at cutoff
             while (i < qrels.size() && idealRelevance > 0.0) {
                 // calculate change in ideal dcg
-                idealRelevance = qrels.get(i).getRelevance().getValue();
+                idealRelevance = qrels.get(i).getValue();
 
                 if (idealRelevance > 0) {
                     idcg += idealRelevance / (Math.log(i + 2) / Math.log(2));

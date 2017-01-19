@@ -43,7 +43,7 @@ public abstract class Run {
 
         for (TopicRun topicRun : runList) {
             // order TopicRun by relvance value.
-            topicRun.getRun().sort((RunLine rl1, RunLine rl2) -> Double.compare(rl2.getRelevance().getValue(), rl1.getRelevance().getValue()));
+            topicRun.getRun().sort((RunLine rl1, RunLine rl2) -> Double.compare(rl2.getValue(), rl1.getValue()));
 
             // if numOfDocsPerTopic is active consider only the first N docs, discard the rest.
             if (EvaluatorManager.numOfDocsPerTopic < Integer.MAX_VALUE) {
@@ -112,7 +112,7 @@ public abstract class Run {
             Qrel q = collection.getQrel(runLine.getIdDocument(), runLine.getIdTopic());
             if (q == null) {
                 return;
-            } else if (q.getRelevance().isUnjudged()) {
+            } else if (q.isUnjudged()) {
                 return;
             }
         }

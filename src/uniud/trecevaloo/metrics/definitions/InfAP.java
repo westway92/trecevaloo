@@ -44,13 +44,13 @@ public class InfAP extends Metric {
 
             if(q==null){
                 continue;
-            } else if(q.getRelevance().isUnjudged()){
+            } else if(q.isUnjudged()){
                 unjudgedSoFar++;
                 continue;
             }
 
 
-            if(!q.getRelevance().isRelevant()){
+            if(!q.isRelevant()){
                 nonRelSoFar++;
             } else {
                 relSoFar++;

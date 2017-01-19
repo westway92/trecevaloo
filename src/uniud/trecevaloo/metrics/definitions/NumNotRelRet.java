@@ -27,11 +27,11 @@ public class NumNotRelRet extends Metric {
             Qrel q = collection.getQrel(runLine.getIdDocument(),topicRun.getIdTopic());
             if(q == null){continue;}
 
-            if(q.getRelevance().isUnjudged()){
+            if(q.isUnjudged()){
                 continue;
             }
 
-            if(!q.getRelevance().isRelevant()){
+            if(!q.isRelevant()){
                 notRelRet++;
             }
         }

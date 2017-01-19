@@ -49,7 +49,7 @@ public class Success extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 success = 1.0;
             }
         }

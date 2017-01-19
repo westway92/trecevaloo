@@ -51,10 +51,10 @@ public abstract class RunLine {
     }
 
     /**
-     * Get the relevance.
-     * @return the relevance.
+     * Return the relevance value.
+     * @return value in double.
      */
-    public Relevance getRelevance() {
-        return relevance;
+    public double getValue(){
+        return relevance.getValue();
     }
 }

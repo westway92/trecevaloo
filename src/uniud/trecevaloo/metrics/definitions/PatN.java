@@ -50,7 +50,7 @@ public class PatN extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                     count++;
             }
         }

@@ -37,7 +37,7 @@ public class TopicQrel {
     public List<Qrel> getQrels() {
         List<Qrel> qrelsList = new ArrayList<>(qrels.values());
         // order the qrels by relevance descending,  useful for some metrics like IDCG
-        qrelsList.sort((Qrel o1, Qrel o2)->Double.compare(o2.getRelevance().getValue(), o1.getRelevance().getValue()));
+        qrelsList.sort((Qrel o1, Qrel o2)->Double.compare(o2.getValue(), o1.getValue()));
 
         return qrelsList;
     }

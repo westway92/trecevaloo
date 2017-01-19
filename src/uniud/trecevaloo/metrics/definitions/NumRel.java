@@ -30,7 +30,7 @@ public class NumRel extends Metric {
         }
 
         for (Qrel q: topicQrel.getQrels()) {
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 numRel++;
             }
         }

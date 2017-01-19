@@ -41,7 +41,7 @@ public class BPref extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 if(numNotRelDocs > 0) {
                     bPrefValue += 1.0 - (Math.min(numNotRelDocs, numRel) / Math.min(numRel, numNotRel));
                 } else {

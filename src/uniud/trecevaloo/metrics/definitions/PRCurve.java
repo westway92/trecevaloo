@@ -81,7 +81,7 @@ public class PRCurve extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 while (currentCut >= 0 && relSoFar == cutoffs[currentCut]) {
                     pValues[currentCut] = intPrecision;
                     currentCut--;

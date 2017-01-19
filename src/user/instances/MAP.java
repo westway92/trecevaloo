@@ -44,7 +44,7 @@ public class MAP extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 Metric PatIMetric = new PatN(i+1);
                 double pAtI = PatIMetric.compute(topicRun,collection).toDouble();
                 ap += pAtI;

@@ -41,10 +41,27 @@ public class Qrel {
     }
 
     /**
-     * Get relevance.
-     * @return relevance.
+     * This method defines if the relevance judgment is relevant or not in binary metrics.
+     * @return true if is relevant, false otherwise.
      */
-    public Relevance getRelevance(){
-        return relevance;
+    public boolean isRelevant(){
+        return relevance.isRelevant();
     }
+
+    /**
+     * This method defines if the relevance judgment is unjudged.
+     * @return true if is unjudged, false otherwise.
+     */
+    public boolean isUnjudged(){
+        return relevance.isUnjudged();
+    }
+
+    /**
+     * Return the relevance value.
+     * @return value in double.
+     */
+    public double getValue(){
+        return relevance.getValue();
+    }
+
 }

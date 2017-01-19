@@ -33,7 +33,7 @@ public class MRR extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 recpRank = 1.0/(i+1.0);
                 break;
             }

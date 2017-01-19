@@ -62,7 +62,7 @@ public class MAP extends Metric {
                 continue;
             }
 
-            if(q.getRelevance().isRelevant()){
+            if(q.isRelevant()){
                 relSoFar++;
                 ap += relSoFar / (i + 1);
             }
