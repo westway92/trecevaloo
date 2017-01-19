@@ -219,14 +219,14 @@ public class Test {
             //runPath = "data\\test_treceval\\results.test";
 
             // random tests
-            //qrelPath =  "data\\test_random\\qrels.test";
-            //runPath  = "data\\test_random\\run.test";
+            qrelPath =  "data\\test_random\\qrels.test";
+            runPath  = "data\\test_random\\run.test";
 
             //qrelPath =  "data\\test_TREC8\\qrelsTrec8";
             //runPath  = "data\\test_TREC8\\run";
 
-            qrelPath = "data\\test_million_query\\qrelsMillion";
-            runPath = "data\\test_million_query\\run";
+            //qrelPath = "data\\test_million_query\\qrelsMillion";
+            //runPath = "data\\test_million_query\\run";
 
         } else if (OS.contains("nix") || OS.contains("nux") || OS.contains("aix")) {
             // This is Unix
@@ -245,13 +245,12 @@ public class Test {
             //runPath = "./data/test_TREC8/run/input.acsys8aln2";
 
             // test million query track
-            qrelPath = "./data/test_million_query/qrelsMillion_2";                  // bynary relevance qrels (87000)
-            runPath = "./data/test_million_query/run10000";
-
+            //qrelPath = "./data/test_million_query/qrelsMillion_2";                  // bynary relevance qrels (87000)
+            //runPath = "./data/test_million_query/run10000";
 
             // random tests
-            //qrelPath = "./data/test_random/qrels.test";
-            //runPath = "./data/test_random/run.test";
+            qrelPath = "./data/test_random/qrels.test";
+            runPath = "./data/test_random/run.test";
 
         } else if (OS.contains("mac")) {
             // This is Mac
