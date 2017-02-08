@@ -82,7 +82,7 @@ public class NumericResult extends Result {
         }
 
         double topicNum;
-        if(EvaluatorManager.avgOverAllTopicsInCollection){
+        if(EvaluatorManager.isAvgOverAllTopicsInCollection()){
             topicNum = collection.getTopicQrels().size();
         } else {
             topicNum = resultsList.size();
@@ -110,7 +110,7 @@ public class NumericResult extends Result {
 
 
         double topicNum;
-        if(EvaluatorManager.avgOverAllTopicsInCollection){
+        if(EvaluatorManager.isAvgOverAllTopicsInCollection()){
             topicNum = collection.getTopicQrels().size();
         } else {
             topicNum = resultsList.size();

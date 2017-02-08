@@ -57,4 +57,12 @@ public abstract class RunLine {
     public double getValue(){
         return relevance.getValue();
     }
+
+    /**
+     * Get the relevance.
+     * @return the relevance.
+     */
+    public Relevance getRelevance() {
+        return relevance;
+    }
 }

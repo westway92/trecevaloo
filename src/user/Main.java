@@ -68,7 +68,7 @@ public class Main {
         // options
         if(numOfDocsFlag > -1){
             System.out.println("Num of docs per topic: " + numOfDocsFlag);
-            evaluatorManager.setNumberOfDocsPerTopic(numOfDocsFlag);
+            evaluatorManager.setNumOfDocsPerTopic(numOfDocsFlag);
         }
 
         if(onlyJudgedFlag){

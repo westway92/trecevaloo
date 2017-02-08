@@ -97,7 +97,7 @@ public class Test {
         // options
         if(numOfDocsFlag > -1){
             System.out.println("Num of docs per topic: " + numOfDocsFlag);
-            evaluatorManager.setNumberOfDocsPerTopic(numOfDocsFlag);
+            evaluatorManager.setNumOfDocsPerTopic(numOfDocsFlag);
         }
 
         if(onlyJudgedFlag){
@@ -235,9 +235,9 @@ public class Test {
             outFilePath = "results_out/example.out";
 
             // trec_eval tests
-            //qrelPath = "./data/test_treceval/qrels.test";                   // bynary relevance qrels (3600)
+            qrelPath = "./data/test_treceval/qrels.test";                   // bynary relevance qrels (3600)
             //qrelPath = "./data/test_treceval/qrels.123";                  // category qrels 0-4  -1 if unjudged (3600)
-            //runPath = "./data/test_treceval/results.test";
+            runPath = "./data/test_treceval/results.test";
 
             // trec8 tests
             //qrelPath = "./data/test_TREC8/qrelsTrec8";                  // bynary relevance qrels (87000)
@@ -246,11 +246,11 @@ public class Test {
 
             // test million query track
             //qrelPath = "./data/test_million_query/qrelsMillion_2";                  // bynary relevance qrels (87000)
-            //runPath = "./data/test_million_query/run10000";
+            //runPath = "./data/test_million_query/run10000/input.ffind07c";
 
             // random tests
-            qrelPath = "./data/test_random/qrels.test";
-            runPath = "./data/test_random/run.test";
+            //qrelPath = "./data/test_random/qrels.test";
+            //runPath = "./data/test_random/run.test";
 
         } else if (OS.contains("mac")) {
             // This is Mac

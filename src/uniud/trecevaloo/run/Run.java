@@ -42,13 +42,13 @@ public abstract class Run {
         runList = new ArrayList<>(topicRuns.values());
 
         for (TopicRun topicRun : runList) {
-            // order TopicRun by relvance value.
+            // order TopicRun by relevance value.
             topicRun.getRun().sort((RunLine rl1, RunLine rl2) -> Double.compare(rl2.getValue(), rl1.getValue()));
 
             // if numOfDocsPerTopic is active consider only the first N docs, discard the rest.
-            if (EvaluatorManager.numOfDocsPerTopic < Integer.MAX_VALUE) {
-                if (EvaluatorManager.numOfDocsPerTopic < topicRun.size()) {
-                    List<RunLine> newRun = topicRun.getRun().subList(0, EvaluatorManager.numOfDocsPerTopic);
+            if (EvaluatorManager.getNumOfDocsPerTopic() < Integer.MAX_VALUE) {
+                if (EvaluatorManager.getNumOfDocsPerTopic() < topicRun.size()) {
+                    List<RunLine> newRun = topicRun.getRun().subList(0, EvaluatorManager.getNumOfDocsPerTopic());
                     topicRun.setRun(newRun);
                 }
             }
@@ -108,7 +108,7 @@ public abstract class Run {
      * @param runLine single run line.
      */
     public void add(RunLine runLine) {
-        if (EvaluatorManager.onlyJudgedDocs) {
+        if (EvaluatorManager.isOnlyJudgedDocs()) {
             Qrel q = collection.getQrel(runLine.getIdDocument(), runLine.getIdTopic());
             if (q == null) {
                 return;

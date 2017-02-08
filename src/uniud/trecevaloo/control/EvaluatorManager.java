@@ -24,9 +24,9 @@ public class EvaluatorManager {
     private MetricComponent metrics;
     private ResultComponent results;
     private    boolean computationDone;
-    static public   boolean onlyJudgedDocs;
-    static public   boolean avgOverAllTopicsInCollection;
-    static public   int numOfDocsPerTopic;
+    private static boolean onlyJudgedDocs;
+    private static boolean avgOverAllTopicsInCollection;
+    private static int numOfDocsPerTopic;
     public double time = 0;
 
     /**
@@ -39,13 +39,57 @@ public class EvaluatorManager {
        this.collection = collection;
        this.runSet = runSet;
        this.metrics = metrics;
-       avgOverAllTopicsInCollection = false;
-       onlyJudgedDocs = false;
+       setAvgOverAllTopicsInCollection(false);
+       setOnlyJudgedDocs(false);
        computationDone = false;
-       numOfDocsPerTopic = Integer.MAX_VALUE;
+       setNumOfDocsPerTopic(Integer.MAX_VALUE);
        results = new ResultSet("",null, ResultComponent.Type.GENERAL);
    }
 
+    public static boolean isOnlyJudgedDocs() {
+        return onlyJudgedDocs;
+    }
+
+    public static void setOnlyJudgedDocs(boolean onlyJudgedDocs) {
+        EvaluatorManager.onlyJudgedDocs = onlyJudgedDocs;
+    }
+
+    public static boolean isAvgOverAllTopicsInCollection() {
+        return avgOverAllTopicsInCollection;
+    }
+
+    public static void setAvgOverAllTopicsInCollection(boolean avgOverAllTopicsInCollection) {
+        EvaluatorManager.avgOverAllTopicsInCollection = avgOverAllTopicsInCollection;
+    }
+
+    public static int getNumOfDocsPerTopic() {
+        return numOfDocsPerTopic;
+    }
+
+    public static void setNumOfDocsPerTopic(int numOfDocsPerTopic) {
+        EvaluatorManager.numOfDocsPerTopic = numOfDocsPerTopic;
+    }
+
+    /**
+     * Set EvaluatorManager to calculate all values only over the judged documents (either relevant or not relevant).
+     * All unjudged documents are removed from the retrieved set before any calculation.
+     * Possibly leaving an empty set, DO NOT USE, unless you really know what you're doing.
+     */
+    public void considerOnlyJudgedDocs() {
+        setOnlyJudgedDocs(true);
+    }
+
+    /**
+     * Set EvaluatorManager to average over the complete set of topics in the relevance judgements
+     * instead of the topics in the intersection of relevance judgements (qrels)
+     * and the run.  Missing topics will contribute a value of 0 to all
+     * evaluation measures (which may or may not be reasonable for a
+     * particular evaluation measure, but is reasonable for standard TREC
+     * measures.) Default is off.
+     */
+    public void averageOverAllTopicsInCollection() {
+        setAvgOverAllTopicsInCollection(true);
+    }
 
     /**
      * Compute the evaluation process.
@@ -120,33 +164,6 @@ public class EvaluatorManager {
         System.out.println("Total of qrels: " + collection.getQrels().size() + "\n\n");
         //System.out.println("Doc for topic rateo (in qrels): " + collection.docforTopicRateo() + "\n\n");
     }
-
-    /**
-     * Set EvaluatorManager to calculate all values only over the judged documents (either relevant or not relevant).
-     * All unjudged documents are removed from the retrieved set before any calculation.
-     * Possibly leaving an empty set, DO NOT USE, unless you really know what you're doing.
-     */
-    public void considerOnlyJudgedDocs() {
-        onlyJudgedDocs = true;
-    }
-
-    /**
-     * Set the number of documents per topic to consider in the evaluation of the run.
-     * @param numberOfDocsPerTopic number of docs per topic.
-     */
-    public void setNumberOfDocsPerTopic(int numberOfDocsPerTopic) {
-        numOfDocsPerTopic = numberOfDocsPerTopic;
-    }
-
-    /**
-     * Set EvaluatorManager to average over the complete set of topics in the relevance judgements
-     * instead of the topics in the intersection of relevance judgements (qrels)
-     * and the run.  Missing topics will contribute a value of 0 to all
-     * evaluation measures (which may or may not be reasonable for a
-     * particular evaluation measure, but is reasonable for standard TREC
-     * measures.) Default is off.
-     */
-    public void averageOverAllTopicsInCollection() {avgOverAllTopicsInCollection = true; }
 
     /**
      * Manage the importation of runs and collection.

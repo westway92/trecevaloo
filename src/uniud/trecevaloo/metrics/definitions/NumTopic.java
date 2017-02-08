@@ -24,7 +24,7 @@ public class NumTopic extends Metric {
     @Override
     public Result computeTopicResult(TopicRun topicRun, Collection collection) {
 
-        if(!EvaluatorManager.avgOverAllTopicsInCollection){
+        if(!EvaluatorManager.isAvgOverAllTopicsInCollection()){
             return new NumericResult(topicRun.getIdTopic(), this, 1);
         } else {
             return null;
@@ -35,7 +35,7 @@ public class NumTopic extends Metric {
     public Result computeOverallResult(ResultSet results, Collection collection) {
         double numOfTopics;
 
-        if(!EvaluatorManager.avgOverAllTopicsInCollection){
+        if(!EvaluatorManager.isAvgOverAllTopicsInCollection()){
             return NumericResult.sumResults(results,this);
         } else {
             numOfTopics = collection.getTopicQrels().size();

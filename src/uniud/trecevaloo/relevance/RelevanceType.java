@@ -9,7 +9,7 @@ public interface RelevanceType {
 
     /**
      * This method has the purpose to read correctly the relevance translating it in a double value used inside the system.
-     * For example if the relevance found in the source of qrels are "NOT RELEVAT" and "RELEVANT" it can be translated in 0 and 1.
+     * For example if the relevance found in the source of qrels are "NOT RELEVANT" and "RELEVANT" it can be translated in 0 and 1.
      *
      * @param value the value to read (Can be anything).
      * @return the value used in the system.
