@@ -99,6 +99,14 @@ public abstract class Collection {
     }
 
     /**
+     * Get the qrel list size.
+     * @return qrel list size.
+     */
+    public int getQrelsSize() {
+        return qrelsList.size();
+    }
+
+    /**
      * Get the qrels hash-map.
      * @return  qrels hash-map.
      */

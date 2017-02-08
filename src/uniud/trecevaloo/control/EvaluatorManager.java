@@ -159,9 +159,9 @@ public class EvaluatorManager {
         System.out.println("Time elapsed: " + difference/1000 + " seconds\n");
         time = difference/1000;
         System.out.println("Statistics: ");
-        System.out.println("Number of runs: " + runSet.getRuns().size());
+        System.out.println("Number of runs: " + runSet.getRunsSize());
         System.out.println("Total of runLines: " + totalRunLines);
-        System.out.println("Total of qrels: " + collection.getQrels().size() + "\n\n");
+        System.out.println("Total of qrels: " + collection.getQrelsSize() + "\n\n");
         //System.out.println("Doc for topic rateo (in qrels): " + collection.docforTopicRateo() + "\n\n");
     }
 

@@ -24,6 +24,6 @@ public class NumQrels extends Metric {
 
     @Override
     public Result computeOverallResult(ResultSet results, Collection collection) {
-        return new NumericResult(Result.ALL, this, collection.getQrels().size());
+        return new NumericResult(Result.ALL, this, collection.getQrelsSize());
     }
 }

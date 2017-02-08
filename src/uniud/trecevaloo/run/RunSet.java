@@ -63,4 +63,12 @@ public abstract class RunSet {
     public List<Run> getRuns() {
         return runSet;
     }
+
+    /**
+     * Return the size of the list of run in the run set.
+     * @return run list size.
+     */
+    public int getRunsSize() {
+        return runSet.size();
+    }
 }
