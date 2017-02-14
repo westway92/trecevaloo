@@ -63,7 +63,8 @@ public class Main {
         // run
         RunSet runSet = new AdHocTRECRunSet(runRelevanceType,runPath);
 
-        EvaluatorManager evaluatorManager = new EvaluatorManager(collection,runSet,metrics);
+        EvaluatorManager evaluatorManager = EvaluatorManager.getInstance();
+        evaluatorManager.init(collection,runSet,metrics);
 
         // options
         if(numOfDocsFlag > -1){

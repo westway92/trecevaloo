@@ -20,6 +20,7 @@ public abstract class Run {
     private Collection collection;
     private int size = 0;
 
+
     /**
      * The run constructor.
      * @param name          the name of the run.
@@ -34,6 +35,7 @@ public abstract class Run {
      * This method manages the importation of  a single run.
      */
     public void createRun(Collection collection) throws TrecEvalOOException {
+        EvaluatorManager evaluatorManager = EvaluatorManager.getInstance();
         this.collection = collection;
         System.out.println("Importing run " + name + "...");
 
@@ -46,9 +48,9 @@ public abstract class Run {
             topicRun.getRun().sort((RunLine rl1, RunLine rl2) -> Double.compare(rl2.getValue(), rl1.getValue()));
 
             // if numOfDocsPerTopic is active consider only the first N docs, discard the rest.
-            if (EvaluatorManager.getNumOfDocsPerTopic() < Integer.MAX_VALUE) {
-                if (EvaluatorManager.getNumOfDocsPerTopic() < topicRun.size()) {
-                    List<RunLine> newRun = topicRun.getRun().subList(0, EvaluatorManager.getNumOfDocsPerTopic());
+            if (evaluatorManager.getNumOfDocsPerTopic() < Integer.MAX_VALUE) {
+                if (evaluatorManager.getNumOfDocsPerTopic() < topicRun.size()) {
+                    List<RunLine> newRun = topicRun.getRun().subList(0, evaluatorManager.getNumOfDocsPerTopic());
                     topicRun.setRun(newRun);
                 }
             }
@@ -108,7 +110,8 @@ public abstract class Run {
      * @param runLine single run line.
      */
     public void add(RunLine runLine) {
-        if (EvaluatorManager.isOnlyJudgedDocs()) {
+        EvaluatorManager evaluatorManager = EvaluatorManager.getInstance();
+        if (evaluatorManager.isOnlyJudgedDocs()) {
             Qrel q = collection.getQrel(runLine.getIdDocument(), runLine.getIdTopic());
             if (q == null) {
                 return;

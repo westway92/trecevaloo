@@ -19,55 +19,63 @@ import java.util.List;
  */
 public class EvaluatorManager {
 
+    private static EvaluatorManager instance;
     private Collection collection;
     private RunSet runSet;
     private MetricComponent metrics;
     private ResultComponent results;
-    private    boolean computationDone;
-    private static boolean onlyJudgedDocs;
-    private static boolean avgOverAllTopicsInCollection;
-    private static int numOfDocsPerTopic;
+    private boolean computationDone;
+    private boolean onlyJudgedDocs;
+    private boolean avgOverAllTopicsInCollection;
+    private int numOfDocsPerTopic;
     public double time = 0;
 
     /**
      * Constructor of the EvaluatorManager.
-     * @param collection the collection.
-     * @param runSet the run set.
-     * @param metrics the metric set (or single metric).
      */
-   public EvaluatorManager(Collection collection, RunSet runSet, MetricComponent metrics){
-       this.collection = collection;
-       this.runSet = runSet;
-       this.metrics = metrics;
-       setAvgOverAllTopicsInCollection(false);
-       setOnlyJudgedDocs(false);
-       computationDone = false;
-       setNumOfDocsPerTopic(Integer.MAX_VALUE);
-       results = new ResultSet("",null, ResultComponent.Type.GENERAL);
-   }
+    private EvaluatorManager() {}
 
-    public static boolean isOnlyJudgedDocs() {
+    public static EvaluatorManager getInstance() {
+        if (instance==null){
+            System.err.println("Istanza creata");
+            instance = new EvaluatorManager();
+        }
+        return instance;
+    }
+
+    public void init(Collection collection, RunSet runSet, MetricComponent metrics) {
+        this.collection = collection;
+        this.runSet = runSet;
+        this.metrics = metrics;
+        setAvgOverAllTopicsInCollection(false);
+        setOnlyJudgedDocs(false);
+        computationDone = false;
+        setNumOfDocsPerTopic(Integer.MAX_VALUE);
+        results = new ResultSet("",null, ResultComponent.Type.GENERAL);
+    }
+
+    public boolean isOnlyJudgedDocs() {
         return onlyJudgedDocs;
     }
 
-    public static void setOnlyJudgedDocs(boolean onlyJudgedDocs) {
-        EvaluatorManager.onlyJudgedDocs = onlyJudgedDocs;
+    public void setOnlyJudgedDocs(boolean onlyJudgedDocs) {
+        this.onlyJudgedDocs = onlyJudgedDocs;
     }
 
-    public static boolean isAvgOverAllTopicsInCollection() {
+    public boolean isAvgOverAllTopicsInCollection() {
         return avgOverAllTopicsInCollection;
     }
 
-    public static void setAvgOverAllTopicsInCollection(boolean avgOverAllTopicsInCollection) {
-        EvaluatorManager.avgOverAllTopicsInCollection = avgOverAllTopicsInCollection;
+    public void setAvgOverAllTopicsInCollection(boolean avgOverAllTopicsInCollection) {
+        this.avgOverAllTopicsInCollection = avgOverAllTopicsInCollection;
     }
 
-    public static int getNumOfDocsPerTopic() {
+    public int getNumOfDocsPerTopic() {
         return numOfDocsPerTopic;
     }
 
-    public static void setNumOfDocsPerTopic(int numOfDocsPerTopic) {
-        EvaluatorManager.numOfDocsPerTopic = numOfDocsPerTopic;
+    public void setNumOfDocsPerTopic(int numOfDocsPerTopic) {
+        this.numOfDocsPerTopic = numOfDocsPerTopic;
     }
 
     /**

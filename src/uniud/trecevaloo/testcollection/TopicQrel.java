@@ -35,10 +35,23 @@ public class TopicQrel {
      * @return qrel list.
      */
     public List<Qrel> getQrels() {
+        return getQrelsList();
+    }
+
+    /**
+     * Give the size of the lists of qrel concerning this specific topic.
+     * @return qrel list size.
+     */
+    protected int getQrelsSize() {
+        List<Qrel> qrelsList = getQrelsList();
+
+        return qrelsList.size();
+    }
+
+    private List<Qrel> getQrelsList() {
         List<Qrel> qrelsList = new ArrayList<>(qrels.values());
         // order the qrels by relevance descending,  useful for some metrics like IDCG
         qrelsList.sort((Qrel o1, Qrel o2)->Double.compare(o2.getValue(), o1.getValue()));
-
         return qrelsList;
     }
 

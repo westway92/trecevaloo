@@ -115,7 +115,8 @@ public class PRCurve extends Metric {
         for (int i = 0; i < LEVELS_NUM; i++) {
 
             double topicNum;
-            if(EvaluatorManager.isAvgOverAllTopicsInCollection()){
+            EvaluatorManager evaluatorManager = EvaluatorManager.getInstance();
+            if(evaluatorManager.isAvgOverAllTopicsInCollection()){
                 topicNum = collection.getTopicQrels().size();
             } else {
                 topicNum = resultsList.size();

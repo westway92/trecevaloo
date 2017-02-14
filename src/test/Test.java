@@ -92,7 +92,8 @@ public class Test {
         // run
         RunSet runSet = new AdHocTRECRunSet(runRelevanceType,runPath);
 
-        EvaluatorManager evaluatorManager = new EvaluatorManager(collection,runSet,metrics);
+        EvaluatorManager evaluatorManager = EvaluatorManager.getInstance();
+        evaluatorManager.init(collection,runSet,metrics);
 
         // options
         if(numOfDocsFlag > -1){
@@ -148,7 +149,7 @@ public class Test {
                         String sCurrentLine;
 
                         String outPath = "./data/test_million_query/out/" + filePath.getFileName().toString()  + "_t" + numtopics[index];
-                        PrintWriter writer = null;
+                        PrintWriter writer;
 
                         try {
                             writer = new PrintWriter(outPath, "UTF-8");
@@ -235,18 +236,18 @@ public class Test {
             outFilePath = "results_out/example.out";
 
             // trec_eval tests
-            qrelPath = "./data/test_treceval/qrels.test";                   // bynary relevance qrels (3600)
+            //qrelPath = "./data/test_treceval/qrels.test";                   // bynary relevance qrels (3600)
             //qrelPath = "./data/test_treceval/qrels.123";                  // category qrels 0-4  -1 if unjudged (3600)
-            runPath = "./data/test_treceval/results.test";
+            //runPath = "./data/test_treceval/results.test";
 
             // trec8 tests
-            //qrelPath = "./data/test_TREC8/qrelsTrec8";                  // bynary relevance qrels (87000)
+            qrelPath = "./data/test_TREC8/qrelsTrec8";                  // bynary relevance qrels (87000)
             //runPath = "./data/test_TREC8/run";
-            //runPath = "./data/test_TREC8/run/input.acsys8aln2";
+            runPath = "./data/test_TREC8/run/input.acsys8aln2";
 
             // test million query track
-            //qrelPath = "./data/test_million_query/qrelsMillion_2";                  // bynary relevance qrels (87000)
-            //runPath = "./data/test_million_query/run10000/input.ffind07c";
+            //qrelPath = "./data/test_million_query/qrelsMillion";                  // bynary relevance qrels (87000)
+            //runPath = "./data/test_million_query/run/input.UAmsT07MSum6";
 
             // random tests
             //qrelPath = "./data/test_random/qrels.test";

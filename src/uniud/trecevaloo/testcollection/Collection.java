@@ -77,7 +77,7 @@ public abstract class Collection {
         List<TopicQrel> topicQrelList = new ArrayList<>(qrels.values());
 
         for (TopicQrel t: topicQrelList) {
-            sum += t.getQrels().size();
+            sum += t.getQrelsSize();
         }
         return sum/topicQrelList.size();
     }
