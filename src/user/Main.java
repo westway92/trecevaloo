@@ -82,10 +82,10 @@ public class Main {
             evaluatorManager.averageOverAllTopicsInCollection();
         }
 
-        // start computing...
+        // Start computing...
         evaluatorManager.evaluate();
 
-        // show summury results
+        // Show summury results
         evaluatorManager.showResults(resultViewer);
 
         // Export results in a file
@@ -104,7 +104,7 @@ public class Main {
                 " ----------------------------------------------------\n\n" +
                 "This command line interface is meant only for the default TREC ad Hoc classes already implemented by default in the framework.\n" +
                 "The options are limited respect the potentiality of this framework and his user custom instances. \n\n" +
-                "There are a fair number of options, of wich only the lower case options are normally used:\n\n" +
+                "There are a fair number of options, of which only the lower case options are normally used:\n\n" +
                 "   -h: print full help message of how to use the software and exit.\n" +
                 "   -Q <qrelspath>: set the path to the qrels trec ad hoc file. \n" +
                 "   -R <runpath>: set the path to the run trec ad hoc file, or a folder path which contains all the runs. \n" +
