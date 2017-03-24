@@ -8,20 +8,13 @@ import uniud.trecevaloo.exceptions.TrecEvalOORelevanceException;
  */
 public class BinaryRelevanceType implements RelevanceType {
 
-    private String relevant;
-    private String notRelevant;
+    static final int RELEVANT = 1;
+    static final int NOT_RELEVANT = 0;
 
     /**
      * The BinaryRelevanceType constructor.
-     *
-     * @param relevant the relevant symbol.
-     * @param notRelevant the not relevant symbol.
      */
-    public BinaryRelevanceType(String relevant, String notRelevant){
-        this.relevant = relevant;
-        this.notRelevant = notRelevant;
-
-    }
+    public BinaryRelevanceType(String relevant, String notRelevant){}
 
     /**
      * It reads correctly the symbol and gives the value used inside the system.
@@ -33,9 +26,9 @@ public class BinaryRelevanceType implements RelevanceType {
     @Override
     public double readValue(Object value) {
 
-        if(value.equals(notRelevant) ){
+        if(value.equals(NOT_RELEVANT) ){
             return 0;
-        } else if (value.equals(relevant)){
+        } else if (value.equals(RELEVANT)){
             return 1;
         } else {
             throw new TrecEvalOORelevanceException("unreadable binary relevance " + value);

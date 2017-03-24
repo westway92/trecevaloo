@@ -224,7 +224,7 @@ public class IterTest {
             //runPath  = "data\\test_random\\run.test";
 
             qrelPath =  "data\\test_TREC8\\qrels.txt";
-            runPath  = "data\\test_TREC8\\run";
+            runPath  = "data\\test_TREC8\\run\\input.acsys8aln2";
 
             //qrelPath = "data\\test_million_query\\qrelsMillion";
             //runPath = "data\\test_million_query\\run";
