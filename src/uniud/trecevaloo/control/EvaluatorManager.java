@@ -158,19 +158,13 @@ public class EvaluatorManager {
             run.dismiss();
         }
 
-            // end time
+        // end time
         long end_time = System.nanoTime();
         double difference = (end_time - start_time)/1e6;
 
         computationDone = true;
-        System.out.println("\nCOMPUTATION SUCCESSFULLY COMPLETED.");
-        System.out.println("Time elapsed: " + difference/1000 + " seconds\n");
         time = difference/1000;
-        System.out.println("Statistics: ");
-        System.out.println("Number of runs: " + runSet.getRunsSize());
-        System.out.println("Total of runLines: " + totalRunLines);
-        System.out.println("Total of qrels: " + collection.getQrelsSize() + "\n\n");
-        //System.out.println("Doc for topic rateo (in qrels): " + collection.docforTopicRateo() + "\n\n");
+        printResults(totalRunLines, difference);
     }
 
     /**
@@ -202,6 +196,22 @@ public class EvaluatorManager {
         }
 
         System.out.println("\nIMPORTATION DONE.\n");
+    }
+
+
+    /**
+     * Print the results after computation.
+     * @param totalRunLines that defines the size of the input run.
+     * @param difference that defines computation time in milliseconds
+     */
+    private void printResults(int totalRunLines, double difference) {
+        System.out.println("\nCOMPUTATION SUCCESSFULLY COMPLETED.");
+        System.out.println("Time elapsed: " + difference/1000 + " seconds\n");
+        System.out.println("Statistics: ");
+        System.out.println("Number of runs: " + runSet.getRunsSize());
+        System.out.println("Total of runLines: " + totalRunLines);
+        System.out.println("Total of qrels: " + collection.getQrelsSize() + "\n\n");
+        //System.out.println("Doc for topic rateo (in qrels): " + collection.docforTopicRateo() + "\n\n");
     }
 
     /**
